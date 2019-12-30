@@ -5,10 +5,10 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
-conf = {
-  entry: { main: "./src/index.ts" },
+conf = { 
+  entry: { main: "./src/index.tsx" },
   output: {
-    path: path.resolve(__dirname, "docs"),
+    path: path.resolve(__dirname, "build"),
     filename: "[name].[chunkhash].js",
     pathinfo: false
   },
