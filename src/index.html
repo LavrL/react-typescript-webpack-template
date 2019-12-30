@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,15 +20,18 @@
       <h2>Yet another Webpack 4 config</h2>
     </div>
     <div class="containter">
-    
+
     </div>
     <p>Entry point: ./src/index.ts</p>
     <p>Output path: ./docs/ (for GutHub pages)</p>
     <p>Development: npm run start</p>
     <p>Production: npm run build</p>
   </div>
+  
+  <div id="root"></div>
 
   <script src="<%= htmlWebpackPlugin.files.chunks.vendor.entry %>"></script>
   <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
 </body>
+
 </html>
