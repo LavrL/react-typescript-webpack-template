@@ -1,18 +1,18 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const WebpackMd5Hash = require("webpack-md5-hash");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const path = require("path");
+const WebpackMd5Hash = require("webpack-md5-hash");
 
-conf = { 
+conf = {
   entry: { main: "./src/index.tsx" },
   output: {
     path: path.resolve(__dirname, "build"),
     filename: "[name].[chunkhash].js",
     pathinfo: false
   },
-  devtool: "inline-source-map",
+  // devtool: "inline-source-map",
   optimization: {
     splitChunks: {
       cacheGroups: {
@@ -31,10 +31,17 @@ conf = {
     }
   },
   devServer: {
-    overlay: true
+    overlay: true //Shows a full-screen overlay in the browser when there are compiler errors or warnings
   },
   module: {
     rules: [
+      {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader"
+        }
+      },
       {
         test: /\.tsx?$/,
         use: [
@@ -63,17 +70,17 @@ conf = {
     extensions: [".tsx", ".ts", ".js"]
   },
   plugins: [
-    new CleanWebpackPlugin(["docs/*.*"], {}), //DELETE PROD DIR
-    new MiniCssExtractPlugin({
-      filename: "style.[contenthash].css"
+    new CleanWebpackPlugin(["build/*.*"], {}), //remove build folder(s) before building
+    new MiniCssExtractPlugin({ 
+      filename: "style.[contenthash].css" //extracts CSS into separate files
     }),
-    new HtmlWebpackPlugin({
+    new HtmlWebpackPlugin({ //generate HTML file from HTML template
       inject: false,
       hash: true,
       template: "./src/index.html",
       filename: "index.html"
     }),
-    new WebpackMd5Hash()
+    new WebpackMd5Hash() //replace a standard webpack chunkhash with md5
   ]
 };
 
