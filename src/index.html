@@ -6,28 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.chunks.main.css %>">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>React+TypeScript+Babel</title>
 </head>
 
 <body>
-  <div class="header">
-    <img src="./assets/logo.png" style="width: 50px; margin-top: 10px; margin-left: 15px;" class="logo">
-    <p class="name">Webpack Config<p>
-  </div>
-
-  <div class="content">
-    <div class="label">
-      <h2>Yet another Webpack 4 config</h2>
-    </div>
-    <div class="containter">
-
-    </div>
-    <p>Entry point: ./src/index.ts</p>
-    <p>Output path: ./docs/ (for GutHub pages)</p>
-    <p>Development: npm run start</p>
-    <p>Production: npm run build</p>
-  </div>
-  
   <div id="root"></div>
 
   <script src="<%= htmlWebpackPlugin.files.chunks.vendor.entry %>"></script>
